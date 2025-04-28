@@ -132,4 +132,4 @@ dmypy.json
 config_secret.json    # Si en el futuro guardas claves externas
 *.key
 *.pem
-*.cert
+*.certSHEET.json
