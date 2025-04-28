@@ -41,7 +41,7 @@ uvicorn==0.30.1        # 🆕 Servidor ASGI requerido por FastAPI
 transformers==4.40.1   # ✅ Modelos NLP de última generación
 torch==2.3.1           # ✅ Versión LTS con soporte CUDA 12.4+
 faiss-cpu==1.7.4       # ✅ Búsqueda vectorial optimizada
-numpy==1.26.5          # ✅ Actualización crítica de seguridad
+numpy==1.24.4          # ✅ Actualización crítica de seguridad
 sentence-transformers==3.0.0  # 🆕 Embeddings de texto
 chromadb==0.5.0        # 🆕 Base de datos vectorial
 
