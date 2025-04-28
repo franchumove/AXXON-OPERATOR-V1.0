@@ -1,0 +1,19 @@
+      services:
+      - type: web
+        name: axxon-operator
+        env: python
+        plan: free
+        region: oregon
+        buildCommand: "pip install -r requirements.txt"
+        startCommand: "gunicorn main_orquestador:app --timeout 120 --workers 3 --threads 2"
+        envVars:
+          - key: OPENAI_API_KEY
+            value: ${OPENAI_API_KEY}
+          - key: NOTION_TOKEN
+            value: ${NOTION_TOKEN}
+          - key: GOOGLE_CLIENT_ID
+            value: ${GOOGLE_CLIENT_ID}
+          - key: GOOGLE_CLIENT_SECRET
+            value: ${GOOGLE_CLIENT_SECRET}
+          - key: REDIRECT_URI
+            value: ${REDIRECT_URI}
