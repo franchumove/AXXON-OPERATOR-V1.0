@@ -1,5 +1,5 @@
 """
-Órgano de Inferencia Simbólica Unificada – Núcleo AXXON Core v1.7.3
+Órgano de Inferencia Simbólica Unificada – Núcleo AXXON Core v1.7.3 - inference_engine.py
 """
 
 from typing import TypedDict, Literal

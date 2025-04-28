@@ -1,6 +1,5 @@
 """
 AXXON - Generador de respuestas adaptativas simbólicas (GPT-4).
-
 Versión: 2.2.0
 Compatible con OpenAI API >= 1.0.0
 """
@@ -16,10 +15,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
-    http_client=None
-)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # ✅ Configuración simplificada
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -28,16 +24,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 # =====================
 
 def generate_response(prompt: str, memory: str = "") -> str:
-    """
-    Genera respuesta simbólica basada en prompt y memoria emocional previa.
-
-    Args:
-        prompt (str): Mensaje estructurado simbólicamente.
-        memory (str): Contexto emocional previo.
-
-    Returns:
-        str: Respuesta adaptativa generada.
-    """
+    """Genera respuesta simbólica basada en prompt y memoria."""
     try:
         contexto = f"Contexto emocional previo: {memory}\n\n{prompt}"
 
@@ -60,10 +47,8 @@ def generate_response(prompt: str, memory: str = "") -> str:
             max_tokens=700
         )
 
-        generated_text = response.choices[0].message.content.strip()
-        logging.info(f"[AXXON GPT Response] Respuesta generada exitosamente.")
-        return generated_text
+        return response.choices[0].message.content.strip()
 
     except Exception as e:
         logging.error(f"[AXXON GPT Engine Error] {e}")
-        return "Gracias por tu mensaje. Estoy aquí, aunque tuve un problema al procesarlo profundamente."
+        return "Hubo un error al procesar tu mensaje. Por favor, inténtalo nuevamente."

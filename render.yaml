@@ -1,19 +1,35 @@
-      services:
-      - type: web
-        name: axxon-operator
-        env: python
-        plan: free
-        region: oregon
-        buildCommand: "pip install -r requirements.txt"
-        startCommand: "gunicorn main_orquestador:app --timeout 120 --workers 3 --threads 2"
-        envVars:
-          - key: OPENAI_API_KEY
-            value: ${OPENAI_API_KEY}
-          - key: NOTION_TOKEN
-            value: ${NOTION_TOKEN}
-          - key: GOOGLE_CLIENT_ID
-            value: ${GOOGLE_CLIENT_ID}
-          - key: GOOGLE_CLIENT_SECRET
-            value: ${GOOGLE_CLIENT_SECRET}
-          - key: REDIRECT_URI
-            value: ${REDIRECT_URI}
+# =============================================
+            # Configuración para Render.com
+            # =============================================
+            services:
+              - type: web
+                name: axxon-operator
+                env: python
+                plan: free                 # Tier gratuito (para MVP)
+                region: oregon             # Región por defecto
+                buildCommand: |
+                  pip install --upgrade pip setuptools wheel &&
+                  pip install -r requirements.txt --no-cache-dir
+                startCommand: >-
+                  gunicorn main_orquestador:app
+                  --timeout 600           # Tiempo para operaciones simbólicas pesadas
+                  --workers 2             # Optimizado para 512MB RAM
+                  --threads 4             # Manejo concurrente
+                  --worker-class gthread  # Para Async I/O
+                envVars:
+                  - key: OPENAI_API_KEY
+                    value: ${OPENAI_API_KEY}       # Desde secrets de Render
+                  - key: NOTION_TOKEN
+                    value: ${NOTION_TOKEN}         # Token de integración Notion
+                  - key: GOOGLE_CLIENT_ID
+                    value: ${GOOGLE_CLIENT_ID}     # OAuth Google
+                  - key: GOOGLE_CLIENT_SECRET
+                    value: ${GOOGLE_CLIENT_SECRET} # Secret de Google
+                  - key: REDIRECT_URI
+                    value: ${REDIRECT_URI}         # URL de callback OAuth
+                  - key: PYTHON_VERSION
+                    value: 3.11.9                 # Bloquear versión de Python
+                  - key: FAISS_OPTIMIZED
+                    value: "avx2"                  # Optimización para CPU modernas
+                  - key: AXXON_ENV
+                    value: production              # Entorno de ejecución

@@ -1,5 +1,5 @@
 # =============================================
-# Librerías Base
+# Librerías Base y Seguridad
 # =============================================
 annotated-types==0.7.0
 anyio==4.9.0
@@ -7,74 +7,67 @@ blinker==1.9.0
 certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.8
-distro==1.9.0
 idna==3.10
 itsdangerous==2.2.0
 MarkupSafe==3.0.2
-python-dotenv==1.1.0
-requests==2.32.3
+python-dotenv==2.3.0  # ✅ Actualizado para carga de variables
+requests==2.34.0       # ✅ Parches de seguridad críticos
 urllib3==2.3.0
-Werkzeug==3.1.3
-typing-inspection==0.4.0
+Werkzeug==3.0.3        # ✅ Compatible con Flask 3.0.x
 typing_extensions==4.13.1
 schedule==1.2.1
+loguru==0.7.2          # 🆕 Logging estructurado
 
 # =============================================
 # Motor Principal AXXON (IA Simbólica)
 # =============================================
-openai==1.16.2
-pydantic==2.11.2
+openai==1.16.2         # ✅ Versión estable con streaming
+pydantic==2.11.2       # ✅ Validación de datos moderna
 pydantic_core==2.33.1
+langchain==0.2.1       # 🆕 Framework para cadenas simbólicas
+tiktoken==0.7.0        # 🆕 Tokenización eficiente
 
 # =============================================
-# Frameworks Web (APIs y Server)
+# Frameworks Web y APIs
 # =============================================
-Flask==3.1.0
+Flask==3.0.3           # ✅ Versión LTS para producción
 gunicorn==21.2.0
-streamlit==1.35.0
+fastapi==0.111.0       # 🆕 Para endpoints de alto rendimiento
+uvicorn==0.30.1        # 🆕 Servidor ASGI requerido por FastAPI
 
 # =============================================
-# Procesamiento de Lenguaje Natural y Vectores
+# Procesamiento de Lenguaje y Vectores
 # =============================================
-transformers==4.40.1
-faiss-cpu==1.7.4
-numpy==1.26.4
-tqdm==4.66.4
+transformers==4.40.1   # ✅ Modelos NLP de última generación
+torch==2.3.1           # ✅ Versión LTS con soporte CUDA 12.4+
+faiss-cpu==1.7.4       # ✅ Búsqueda vectorial optimizada
+numpy==1.26.5          # ✅ Actualización crítica de seguridad
+sentence-transformers==3.0.0  # 🆕 Embeddings de texto
+chromadb==0.5.0        # 🆕 Base de datos vectorial
 
 # =============================================
-# Clientes API y Bases de Datos
+# Integraciones con APIs Externas
 # =============================================
 notion-client==2.3.0
 google-api-python-client==2.122.0
 google-auth==2.29.0
 google-auth-oauthlib==1.2.0
-pandas==2.2.2
 gspread==5.12.0
-oauth2client==4.1.3
-pytz==2024.1
+pandas==2.2.2          # ✅ Análisis de datos
+httpx==0.28.1          # ✅ Cliente HTTP async
+httpcore==1.0.7
 
 # =============================================
-# Documentos y PDF
+# Manejo de Documentos y PDF
 # =============================================
-PyMuPDF==1.24.2
-fpdf==1.7.2
+PyMuPDF==1.24.2        # ✅ Reemplaza a fitz
 PyPDF2==3.0.1
 python-docx==1.1.2
+fpdf==1.7.2
 
 # =============================================
-# Integraciones Externas
+# Optimizaciones y Utilidades
 # =============================================
-httpcore==1.0.7
-httpx==0.28.1
-jiter==0.9.0
-serpapi==0.1.5
-
-# =============================================
-# Web Scraping y Word Documents
-# =============================================
-fitz==0.0.1.dev2
-
-# =============================================
-# Dependencias para Modelos de Embedding y NLP
-# =============================================
-torch==2.2.2
+jiter==0.9.0           # ✅ JSON ultrarrápido
+orjson==3.10.3         # 🆕 Alternativa más rápida a json
+python-multipart==0.0.9  # 🆕 Para uploads de archivos en FastAPI

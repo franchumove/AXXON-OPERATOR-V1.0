@@ -1,5 +1,5 @@
 """
-        AXXON - Generador de respuestas simbólicas adaptativas.
+        AXXON - Generador de respuestas simbólicas adaptativas.- generate_response.py
 
         Versión: 2.1.0
         Compatible con OpenAI API >= 1.0.0
