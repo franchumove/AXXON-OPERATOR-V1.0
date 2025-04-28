@@ -4,6 +4,10 @@ Versión unificada y evolutiva
 Autor: AXXON DevCore
 """
 
+# ========================
+# ⚙️ CARGA Y CONFIGURACIÓN
+# ========================
+
 import os
 import json
 import logging
@@ -15,18 +19,19 @@ from flask import Flask, request, jsonify
 from werkzeug.exceptions import BadRequest, InternalServerError
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
-import openai
+from openai import OpenAI
 
-# ========================
-# ⚙️ CARGA Y CONFIGURACIÓN
-# ========================
-
+# Cargar variables de entorno
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
+# Inicializar cliente OpenAI
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Inicializar servidor Flask y logging
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
+# Memoria temporal de resúmenes
 MEMORIA_RESUMENES = {}
 
 # ========================
@@ -182,7 +187,7 @@ def subir_pdf():
         lector = PdfReader(ruta_temporal)
         texto = "\n".join(p.extract_text() or "" for p in lector.pages)
 
-        respuesta = openai.ChatCompletion.create(
+        respuesta = client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "Resume el siguiente documento en lenguaje claro, simbólico y expandido."},
@@ -190,7 +195,7 @@ def subir_pdf():
             ]
         )
 
-        resumen = respuesta["choices"][0]["message"]["content"].strip()
+        resumen = respuesta.choices[0].message.content.strip()
         MEMORIA_RESUMENES[nombre_base] = resumen
 
         txt_path = guardar_como_txt(resumen, nombre_base)

@@ -73,3 +73,8 @@ serpapi==0.1.5
 # Web Scraping y Word Documents
 # =============================================
 fitz==0.0.1.dev2
+
+# =============================================
+# Dependencias para Modelos de Embedding y NLP
+# =============================================
+torch==2.2.2

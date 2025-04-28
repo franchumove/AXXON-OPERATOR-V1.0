@@ -6,7 +6,6 @@ Módulo AXXON - Motor de generación y búsqueda de embeddings simbólicos.
 Actualizado para OpenAI API >= 1.0.0
 
 Versión: 2.1.0
-Autor: Francois Fillette
 """
 
 import os
@@ -15,26 +14,18 @@ import numpy as np
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# Cargar variables de entorno
-load_dotenv()
+# =====================
+# CARGA Y CONFIGURACIÓN
+# =====================
 
-# Inicializar cliente OpenAI
+load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def generar_embedding(texto: str, model: str = "text-embedding-ada-002") -> list:
-    """
-    Genera un embedding vectorial desde un texto dado.
-
-    Args:
-        texto (str): Texto a vectorizar.
-        model (str): Modelo de embeddings de OpenAI.
-
-    Returns:
-        list: Vector de embedding.
-    """
+    """Genera un embedding vectorial desde un texto dado."""
     try:
         response = client.embeddings.create(
             model=model,
@@ -49,16 +40,7 @@ def generar_embedding(texto: str, model: str = "text-embedding-ada-002") -> list
 
 
 def calcular_similitud(vector_a: list, vector_b: list) -> float:
-    """
-    Calcula la similitud coseno entre dos embeddings.
-
-    Args:
-        vector_a (list): Primer embedding.
-        vector_b (list): Segundo embedding.
-
-    Returns:
-        float: Valor de similitud entre -1 y 1.
-    """
+    """Calcula la similitud coseno entre dos embeddings."""
     try:
         a = np.array(vector_a)
         b = np.array(vector_b)
@@ -70,17 +52,7 @@ def calcular_similitud(vector_a: list, vector_b: list) -> float:
 
 
 def buscar_mas_cercano(embedding_consulta: list, memoria_embeddings: dict, umbral: float = 0.75) -> dict:
-    """
-    Busca el mensaje más similar en la memoria simbólica.
-
-    Args:
-        embedding_consulta (list): Embedding del nuevo mensaje.
-        memoria_embeddings (dict): Diccionario {id: embedding}.
-        umbral (float): Similitud mínima aceptada.
-
-    Returns:
-        dict: {'id': id_mensaje, 'similitud': valor}
-    """
+    """Busca el mensaje más similar en la memoria simbólica."""
     mejor_id = None
     mejor_similitud = -1
 

@@ -1,21 +1,23 @@
+# generate_response.py
+
 """
-Generador simbólico de respuestas adaptativas para AXXON Core.
-Versión 2.2
+Módulo AXXON - Generador de respuestas simbólicas adaptativas.
+
+Compatible con OpenAI API >= 1.0.0
 """
 
-import openai
-import os
 import logging
 from dotenv import load_dotenv
-
-# =====================
-# CARGA Y CONFIGURACIÓN
-# =====================
+from openai import OpenAI
+import os
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Inicializar cliente OpenAI
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 
 def generate_response(
     user_id=None,
@@ -45,8 +47,8 @@ def generate_response(
             )
             logging.info("[AXXON Response] Prompt construido en modo retrocompatible.")
 
-        # Generación de respuesta
-        response = openai.ChatCompletion.create(
+        # Generación de respuesta con cliente moderno
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {
@@ -65,13 +67,10 @@ def generate_response(
             max_tokens=700
         )
 
-        contenido = response["choices"][0]["message"]["content"].strip()
+        contenido = response.choices[0].message.content.strip()
         logging.info(f"[AXXON Response] Respuesta generada para {user_id or 'usuario desconocido'}.")
         return contenido
 
     except Exception as e:
         logging.error(f"[AXXON Response Error] {e}")
         return "Gracias por compartir eso. Estoy aquí y lo recibo, aunque hubo un problema técnico al procesar más profundamente."
-
-
-
