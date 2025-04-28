@@ -18,8 +18,7 @@ load_dotenv()
 
 client = OpenAI(
             api_key=os.getenv("OPENAI_API_KEY"),
-            http_client=None
-        )
+            
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 

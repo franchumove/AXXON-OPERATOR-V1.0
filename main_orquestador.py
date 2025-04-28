@@ -21,6 +21,7 @@ from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from openai import OpenAI
 
+
 # Cargar variables de entorno
 load_dotenv()
 
