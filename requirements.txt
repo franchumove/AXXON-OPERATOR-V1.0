@@ -22,7 +22,7 @@ schedule==1.2.1
 # =============================================
 # Motor Principal AXXON (IA Simbólica)
 # =============================================
-openai==1.30.5
+openai==1.16.2
 pydantic==2.11.2
 pydantic_core==2.33.1
 
