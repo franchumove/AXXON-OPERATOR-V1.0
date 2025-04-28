@@ -1,0 +1,3 @@
+from sync_sheet_to_notion import sincronizar_sheet_a_notion
+
+sincronizar_sheet_a_notion("tablero_adaptativo")

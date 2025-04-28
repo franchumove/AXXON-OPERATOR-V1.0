@@ -1,0 +1,28 @@
+entrypoint = "main_orquestador.py"
+modules = ["nodejs-20", "python-3.11"]
+
+[nix]
+channel = "stable-24_05"
+packages = ["cacert", "glibcLocales", "libxcrypt", "python311Packages.pip"]
+
+[unitTest]
+language = "python3"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+[deployment]
+run = ["python3", "main_orquestador.py"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 5500
+externalPort = 3002
+
+[[ports]]
+localPort = 8501
+externalPort = 5173

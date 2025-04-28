@@ -1,0 +1,124 @@
+{
+  "pages": {
+    "AXXON_Nucleo_Cognitivo": {
+      "tables": {
+        "estructura_contradicciones_polaridades": "1ca25466-211e-802f-acb3f0213c837d04"
+      }
+    },
+    "tablero_adaptativo": {
+      "tables": {
+        "tablero_adaptativo": "1d125466-211e-8072-8986-fc18d2a26890",
+        "modulo_adaptativo_2": "1d125466-211e-802c-b60f-fecd8c0da6d6",
+        "modulo_adaptativo_3": "1d125466-211e-80f9-9754-e205dbc8cba6",
+        "flujo_adaptativo_1": "1d125466-211e-8071-8708-db17f8d1176f",
+        "flujo_adaptativo_2": "1d125466-211e-80f2-865e-dbfd3b2fa318"
+      }
+    },
+    "Diccionario_Simbolico": {
+      "tables": {
+        "pensamiento_emergente_interpretativo": "1ca25466-211e-8061-8254-e13023747603",
+        "espacio_de_expansion_1": "1ca25466-211e-8049-9999-e65f0663ddfe",
+        "espacio_de_expansion_2": "1d125466-211e-8077-baac-d36b675cb41e",
+        "expansion_simbolica": "1d125466-211e-80e7-b1f3-ed41ae9492ae",
+        "diccionario_vivo_1": "1d125466-211e-8008-86d7-c1ef829bbd19",
+        "diccionario_vivo_2": "1e325466-211e-802a-9e27-e82659807600",
+        "diccionario_simbolico_1": "1d125466-211e-808e-ae9f-fbe7803d3251",
+        "diccionario_simbolico_2": "1e325466-211e-8050-b40b-f41096c75dfa"
+      }
+    },
+    "Pensamiento_Emergente": {
+      "tables": {
+        "pensamiento_emergente_cognitivo": "1ca25466-211e-80b3-b371-d11a9a69c7ed"
+      }
+    },
+    "Diccionario_Vivo": {
+      "tables": {
+        "diccionario_vivo_a": "1ca25466-211e-80a8-b5d9-e48eae02825d",
+        "diccionario_vivo_b": "1d125466-211e-800c-a622-d88ca1d61301",
+        "diccionario_vivo_c": "1d125466-211e-8057-99e4-ec6a81706a20"
+      }
+    },
+    "Espacio_Expansion": {
+      "tables": {
+        "expansion_1": "1ca25466-211e-809d-a523-e9baaa76d1fa",
+        "expansion_2": "1d125466-211e-80a7-baf7-f482b784bad3",
+        "expansion_3": "1d125466-211e-8021-b4a9-dd23e25af0e4"
+      }
+    },
+    "Transversalidad_Cognitiva": {
+      "tables": {
+        "transversalidad_1": "1ca25466-211e-804c-a60f-e0d85d1bb976",
+        "transversalidad_2": "1d125466-211e-80c3-9818-dc76f1e6560b",
+        "transversalidad_3": "1d125466-211e-803c-aa3d-d03233e5a399",
+        "transversalidad_4": "1d125466-211e-808c-85a9-e6d3f9dbe375",
+        "transversalidad_5": "1d125466-211e-8021-9342-fde73b9b774f"
+      }
+    },
+    "Hoja_de_Ruta_Tecnica": {
+      "tables": {
+        "hoja_tecnica_1": "1ca25466-211e-805d-b74e-c6c98de52489",
+        "hoja_tecnica_2": "1d125466-211e-8030-93da-e720580caf83",
+        "hoja_tecnica_3": "1d125466-211e-8087-93a4-f8b636b67d9c",
+        "hoja_tecnica_4": "1d125466-211e-80d7-9d09-f2d96959ae31",
+        "hoja_tecnica_5": "1d125466-211e-80a2-8d14-c333a6eaa253",
+        "hoja_tecnica_6": "1d125466-211e-805c-a65b-eb49ddcf64f7"
+      }
+    },
+    "Mapa_de_Mutacion": {
+      "tables": {
+        "mutacion_1": "1ca25466-211e-8073-8762-f174f1907f23",
+        "mutacion_2": "1d125466-211e-805d-8bc1-fd8b807a38ab",
+        "mutacion_3": "1d125466-211e-8075-a602-de470394c1a2",
+        "mutacion_4": "1d125466-211e-802f-a3d9-ea317d7b7780",
+        "mutacion_5": "1d125466-211e-8091-a80f-c40c24909aee"
+      }
+    },
+    "Memoria_de_Casos": {
+      "tables": {
+        "memoria_1": "1ca25466-211e-804c-b30b-eeda9e2d1457",
+        "memoria_2": "1d125466-211e-80b7-b719-ee7f2fd34f53",
+        "memoria_3": "1d125466-211e-800f-bde4-d0b3cbaf0c02",
+        "memoria_4": "1d125466-211e-80cd-ac9f-eae3a6d1f9fa",
+        "memoria_5": "1d125466-211e-8017-8b11-e17ffeec06d1",
+        "memoria_6": "1d125466-211e-808e-a992-e300b640d9f6"
+      }
+    },
+    "Bitacora_Interpretativa": {
+      "tables": {
+        "bitacora_1": "1cb25466-211e-808d-9171-fe008732ef95",
+        "bitacora_2": "1d125466-211e-80ff-80aa-ef47ec5b5a13",
+        "bitacora_3": "1d125466-211e-805f-83de-cd53ab941386",
+        "bitacora_4": "1d125466-211e-809e-870a-e8bb8d64575a"
+      }
+    },
+    "Eventos_Cognitivos_Clave": {
+      "tables": {
+        "evento_1": "1d125466-211e-80d2-a894-fe2f0f211742",
+        "evento_2": "1d125466-211e-8032-afea-e88b53343cce",
+        "evento_3": "1d125466-211e-80b1-af65-e28abe85c931",
+        "evento_4": "1d125466-211e-803b-9e8b-e16234b24eac"
+      }
+    },
+    "XXX": {
+      "tables": {
+        "xxx_1": "1d125466-211e-806d-acbf-f0e3382a2582",
+        "xxx_2": "1d125466-211e-8047-82b6-c8b4c36e3880",
+        "xxx_3": "1d125466-211e-806e-912a-c94cb188e7f0",
+        "xxx_4": "1d125466-211e-809b-8a85-f95fe6b30c33"
+      }
+    },
+    "XXXC": {
+      "tables": {
+        "xxxc_1": "1d125466-211e-8084-9f5c-dda7ad1f6a48",
+        "xxxc_2": "1d125466-211e-80a4-a054-c7dd7fd20146",
+        "xxxc_3": "1d125466-211e-80bc-9fce-c64ce420f1f7",
+        "xxxc_4": "1d125466-211e-802a-b0f1-e1c5890292b6"
+      }
+    },
+    "Identidad_Simbolica": {
+      "tables": {
+        "usuarios": "1d125466-211e-8055-8a27-fd1507b03b58"
+      }
+    }
+  }
+}

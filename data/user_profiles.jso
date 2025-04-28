@@ -1,0 +1,8 @@
+{
+  "ejemplo_usuario": {
+    "emociones_frecuentes": ["curiosidad", "ansiedad"],
+    "tono_predominante": "reflexivo",
+    "motivos_dominantes": ["búsqueda de sentido", "transformación"],
+    "nivel_interacción": "moderado",
+    "registro_inicial": "2025-04-16"
+  }
