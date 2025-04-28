@@ -11,7 +11,7 @@ idna==3.10
 itsdangerous==2.2.0
 MarkupSafe==3.0.2
 python-dotenv==1.0.1  # ✅ Actualizado para carga de variables
-requests==2.34.0       # ✅ Parches de seguridad críticos
+requests==2.31.0       # ✅ Parches de seguridad críticos
 urllib3==2.3.0
 Werkzeug==3.0.3        # ✅ Compatible con Flask 3.0.x
 typing_extensions==4.13.1
