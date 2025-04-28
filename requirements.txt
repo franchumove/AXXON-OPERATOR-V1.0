@@ -24,7 +24,7 @@ loguru==0.7.2          # 🆕 Logging estructurado
 openai==1.16.2         # ✅ Versión estable con streaming
 pydantic==2.11.2       # ✅ Validación de datos moderna
 pydantic_core==2.33.1
-langchain==0.2.1       # 🆕 Framework para cadenas simbólicas
+langchain>=0.2.2       # 🆕 Framework para cadenas simbólicas
 tiktoken==0.7.0        # 🆕 Tokenización eficiente
 
 # =============================================
