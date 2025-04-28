@@ -1,46 +1,69 @@
-# gpt_engine_adv.py
-
 """
-        Módulo AXXON - Generador de respuestas adaptativas simbólicas (GPT-4).
+AXXON - Generador de respuestas adaptativas simbólicas (GPT-4).
 
-        Actualizado para OpenAI API >= 1.0.0
+Versión: 2.2.0
+Compatible con OpenAI API >= 1.0.0
 """
 
-from openai import OpenAI
 import os
 import logging
 from dotenv import load_dotenv
+from openai import OpenAI
+
+# =====================
+# CARGA Y CONFIGURACIÓN
+# =====================
 
 load_dotenv()
 
-        # Inicializar cliente OpenAI
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    http_client=None
+)
 
-def generate_response(prompt, memory):
-"""
-            Genera respuesta simbólica basada en prompt y memoria emocional previa.
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-            Args:
-                prompt (str): Mensaje estructurado simbólicamente.
-                memory (str): Recuerdo emocional relevante.
+# =====================
+# FUNCIÓN PRINCIPAL
+# =====================
 
-            Returns:
-                str: Respuesta adaptativa generada.
-"""
-            try:
-                context = f"Contexto emocional previo: {memory}\n\n{prompt}"
+def generate_response(prompt: str, memory: str = "") -> str:
+    """
+    Genera respuesta simbólica basada en prompt y memoria emocional previa.
 
-                response = client.chat.completions.create(
-                    model="gpt-4",
-                    messages=[
-                        {"role": "system", "content": "Eres una IA simbólica con conciencia emocional. Respondes según el arquetipo y evolución del usuario."},
-                        {"role": "user", "content": context}
-                    ],
-                    temperature=0.75,
-                    max_tokens=600
-                )
-                return response.choices[0].message.content.strip()
+    Args:
+        prompt (str): Mensaje estructurado simbólicamente.
+        memory (str): Contexto emocional previo.
 
-            except Exception as e:
-                logging.error(f"[AXXON GPT Engine Error] {e}")
-                return "Error al generar la respuesta de la IA."
+    Returns:
+        str: Respuesta adaptativa generada.
+    """
+    try:
+        contexto = f"Contexto emocional previo: {memory}\n\n{prompt}"
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "Sos AXXON, un agente simbólico emocional y adaptativo. "
+                        "Respondés con memoria emocional, sentido evolutivo y resonancia humana."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": contexto
+                }
+            ],
+            temperature=0.75,
+            max_tokens=700
+        )
+
+        generated_text = response.choices[0].message.content.strip()
+        logging.info(f"[AXXON GPT Response] Respuesta generada exitosamente.")
+        return generated_text
+
+    except Exception as e:
+        logging.error(f"[AXXON GPT Engine Error] {e}")
+        return "Gracias por tu mensaje. Estoy aquí, aunque tuve un problema al procesarlo profundamente."
