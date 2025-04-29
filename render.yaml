@@ -6,33 +6,35 @@ services:
   - type: web
     name: axxon-operator
     env: python
-    plan: free                   # Tier gratuito (para MVP)
-    region: oregon              # Región por defecto
+    plan: free
+    region: oregon
     buildCommand: |
       pip install --upgrade pip setuptools wheel &&
       pip uninstall -y openai &&
       pip install openai==1.16.2 &&
+      pip install gunicorn==21.2.0 &&
       pip install -r requirements.txt --no-cache-dir
     startCommand: >-
       gunicorn main_orquestador:app
-      --timeout 600             # Tiempo para operaciones simbólicas pesadas
-      --workers 2               # Optimizado para 512MB RAM
-      --threads 4               # Manejo concurrente
-      --worker-class gthread   # Para Async I/O
+      --timeout 600
+      --workers 2
+      --threads 4
+      --worker-class gthread
     envVars:
       - key: OPENAI_API_KEY
-        value: ${OPENAI_API_KEY}       # Desde secrets de Render
+        value: ${OPENAI_API_KEY}
       - key: NOTION_TOKEN
-        value: ${NOTION_TOKEN}         # Token de integración Notion
+        value: ${NOTION_TOKEN}
       - key: GOOGLE_CLIENT_ID
-        value: ${GOOGLE_CLIENT_ID}     # OAuth Google
+        value: ${GOOGLE_CLIENT_ID}
       - key: GOOGLE_CLIENT_SECRET
-        value: ${GOOGLE_CLIENT_SECRET} # Secret de Google
+        value: ${GOOGLE_CLIENT_SECRET}
       - key: REDIRECT_URI
-        value: ${REDIRECT_URI}         # URL de callback OAuth
+        value: ${REDIRECT_URI}
       - key: PYTHON_VERSION
-        value: 3.11.9                   # Versión fija para estabilidad
+        value: 3.11.9
       - key: FAISS_OPTIMIZED
-        value: "avx2"                   # Optimización FAISS para CPUs modernas
+        value: "avx2"
       - key: AXXON_ENV
-        value: production              # Entorno simbólico activo
+        value: production
+    healthCheckPath: /whoami

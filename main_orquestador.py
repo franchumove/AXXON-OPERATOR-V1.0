@@ -15,20 +15,18 @@ import schedule
 import threading
 import time
 import uuid
+import openai
 from flask import Flask, request, jsonify
 from werkzeug.exceptions import BadRequest, InternalServerError
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
-from openai import OpenAI
 
+# ========================
+# CARGA VARIABLES
+# ========================
 
-# Cargar variables de entorno
 load_dotenv()
-
-# Inicializar cliente OpenAI
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Inicializar servidor Flask y logging
 app = Flask(__name__)
@@ -190,7 +188,7 @@ def subir_pdf():
         lector = PdfReader(ruta_temporal)
         texto = "\n".join(p.extract_text() or "" for p in lector.pages)
 
-        respuesta = client.chat.completions.create(
+        respuesta = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "Resume el siguiente documento en lenguaje claro, simbólico y expandido."},

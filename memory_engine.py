@@ -1,9 +1,9 @@
 """
-AXXON Memory Engine:
+AXXON Memory Engine
+Versión 2.2
 - Memoria episódica en SQLite
 - Memoria semántica simbólica con FAISS
 - Indexación emocional simbólica
-Versión: 2.2
 """
 
 import os
@@ -13,7 +13,7 @@ import numpy as np
 import logging
 from datetime import datetime
 from dotenv import load_dotenv
-from openai import OpenAI
+import openai
 
 # =====================
 # ⚙️ CONFIGURACIÓN BASE
@@ -21,7 +21,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # ✅ Configuración correcta
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 DB_PATH = "memory_axxon.db"
 JSONL_PATH = "notion_bloques.jsonl"
@@ -105,7 +105,7 @@ def cargar_y_vectorizar(jsonl_path: str = JSONL_PATH):
 def generar_embedding(texto: str) -> list:
     """Genera embedding simbólico usando OpenAI."""
     try:
-        response = client.embeddings.create(  # ✅ Método actualizado
+        response = openai.Embedding.create(
             model=EMBEDDING_MODEL,
             input=texto
         )

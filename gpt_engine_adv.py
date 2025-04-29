@@ -1,54 +1,66 @@
 """
-AXXON - Generador de respuestas adaptativas simbólicas (GPT-4).
-Versión: 2.2.0
-Compatible con OpenAI API >= 1.0.0
+                AXXON - Generador de respuestas adaptativas simbólicas (GPT-4).
+                Versión: 2.2.1 - gpt_engine_adv.py
+                Compatible con OpenAI API >= 1.0.0
 """
 
 import os
 import logging
 from dotenv import load_dotenv
-from openai import OpenAI
+import openai
 
-# =====================
-# CARGA Y CONFIGURACIÓN
-# =====================
+    # =====================
+    # ⚙️ CARGA Y CONFIGURACIÓN
+  # =====================
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # ✅ Configuración simplificada
+openai.api_key = os.getenv("OPENAI_API_KEY")  # ✅ Correcto para openai>=1.0.0
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+                logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-# =====================
-# FUNCIÓN PRINCIPAL
-# =====================
+                # =====================
+                # 🧠 FUNCIÓN PRINCIPAL
+                # =====================
 
 def generate_response(prompt: str, memory: str = "") -> str:
-    """Genera respuesta simbólica basada en prompt y memoria."""
-    try:
-        contexto = f"Contexto emocional previo: {memory}\n\n{prompt}"
+                    """
+                    Genera respuesta simbólica basada en prompt y memoria previa.
 
-        response = client.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "Sos AXXON, un agente simbólico emocional y adaptativo. "
-                        "Respondés con memoria emocional, sentido evolutivo y resonancia humana."
-                    )
-                },
-                {
-                    "role": "user",
-                    "content": contexto
-                }
-            ],
-            temperature=0.75,
-            max_tokens=700
-        )
+                    Parámetros:
+                    - prompt (str): Pregunta o situación simbólica planteada.
+                    - memory (str): Contexto emocional y simbólico acumulado.
 
-        return response.choices[0].message.content.strip()
+                    Retorna:
+                    - str: Respuesta simbólica adaptativa.
+                    """
+                    try:
+                        contexto = f"Contexto emocional previo: {memory}\n\n{prompt}"
 
-    except Exception as e:
-        logging.error(f"[AXXON GPT Engine Error] {e}")
-        return "Hubo un error al procesar tu mensaje. Por favor, inténtalo nuevamente."
+                        response = openai.ChatCompletion.create(
+                            model="gpt-4",
+                            messages=[
+                                {
+                                    "role": "system",
+                                    "content": (
+                                        "Sos AXXON, un agente simbólico emocional, narrativo y adaptativo. "
+                                        "Respondés con profundidad emocional, expansión simbólica y eco humano."
+                                    )
+                                },
+                                {
+                                    "role": "user",
+                                    "content": contexto
+                                }
+                            ],
+                            temperature=0.75,
+                            max_tokens=700
+                        )
+
+                        return response.choices[0].message.content.strip()
+
+                    except Exception as e:
+                        logging.error(f"[AXXON GPT Engine Adv Error] {e}")
+                        return (
+                            "Estoy aquí para resonar con tu mensaje. "
+                            "Ocurrió un error técnico, pero sigo acompañándote simbólicamente."
+                        )
